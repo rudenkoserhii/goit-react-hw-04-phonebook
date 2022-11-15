@@ -27,6 +27,7 @@ export const ContactForm = ({ onSubmit }) => {
         e.preventDefault();
         onSubmit(contact);
         e.target.reset();
+
     };
 
 
