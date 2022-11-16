@@ -24,7 +24,7 @@ console.log(...contacts)
       return}
     contact['id'] = nanoid();
 
-    setContacts(p => ({ contacts: [contact, ...p.contacts]}));
+    return setContacts((p) => ({ contacts: [contact, ...p.contacts]}));
 
   };
 
@@ -33,7 +33,7 @@ console.log(...contacts)
   };
 
   const deleteContact = (id) => {
-    setContacts(p => ({ contacts: p.contacts.filter(contact => contact.id !== id)}))
+    return setContacts(p => ({ contacts: p.contacts.filter(contact => contact.id !== id)}))
   };
 
 
