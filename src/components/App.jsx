@@ -10,8 +10,6 @@ export const App = () => {
   const [ contacts, setContacts ] = useState(JSON.parse(localStorage.getItem('contacts')) || []);
   const [ filter, setFilter ] = useState('');
 
-console.log(...contacts)
-
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
     }, [contacts]);
@@ -24,7 +22,7 @@ console.log(...contacts)
       return}
     contact['id'] = nanoid();
 
-    return setContacts((p) => ({ contacts: [contact, ...p.contacts]}));
+    setContacts([contact, ...contacts]);
 
   };
 
@@ -33,13 +31,11 @@ console.log(...contacts)
   };
 
   const deleteContact = (id) => {
-    return setContacts(p => ({ contacts: p.contacts.filter(contact => contact.id !== id)}))
+    return setContacts(contacts.filter(contact => contact.id !== id))
   };
 
 
   const normalizedFilter = filter.toLowerCase();
-
-console.log(normalizedFilter);
   const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
 
   return (
