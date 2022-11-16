@@ -27,16 +27,14 @@ export const App = () => {
   };
 
   const filtered = (e) => {
-    setFilter({ filter: e.currentTarget.value });
+    setFilter(e.currentTarget.value);
   };
 
   const deleteContact = (id) => {
     return setContacts(contacts.filter(contact => contact.id !== id))
   };
 
-
-  const normalizedFilter = filter.toLowerCase();
-  const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+  const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
 
   return (
     <Wrapper>
